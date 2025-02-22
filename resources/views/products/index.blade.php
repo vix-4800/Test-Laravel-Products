@@ -9,48 +9,43 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 font-sans overflow-x-auto">
-                    <table class="w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-100 whitespace-nowrap">
-                            <tr>
-                                <th class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Name
-                                </th>
-                                <th class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Price
-                                </th>
-                                <th class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Category
-                                </th>
-                                <th class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
-                            @foreach($products as $product)
-                            <tr>
-                                <td class="px-4 py-4 text-sm text-gray-800">
-                                    {{ $product->name }}
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-800">
-                                    {{ $product->price }}
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-800">
-                                    {{ $product->category->name }}
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-800 flex gap-4">
-                                    <a href="{{ route('products.edit', $product->id) }}" class="text-blue-600 block">Edit</a>
-                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 block">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="flex flex-col overflow-x-auto min-w-full align-middle">
+                        <div class="overflow-hidden border rounded-lg border-gray-300">
+                            <table class=" min-w-full rounded-xl">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th scope="col" class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Name</th>
+                                        <th scope="col" class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Price</th>
+                                        <th scope="col" class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Category</th>
+                                        <th scope="col" class="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($products as $product)
+                                    <tr class="odd:bg-white even:bg-gray-50">
+                                        <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900 ">
+                                            {{ $product->name }}
+                                        </td>
+                                        <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                            {{ $product->price }}
+                                        </td>
+                                        <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                            {{ $product->category->name }}
+                                        </td>
+                                        <td class="p-5 flex gap-4 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                            <a href="{{ route('products.edit', $product->id) }}" class="text-blue-600">Edit</a>
+                                            <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
