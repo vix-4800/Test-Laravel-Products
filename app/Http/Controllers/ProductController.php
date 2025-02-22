@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -21,5 +22,12 @@ class ProductController extends Controller
         return view('products.edit', [
             'product' => $product,
         ]);
+    }
+
+    public function destroy(Product $product): RedirectResponse
+    {
+        $product->delete();
+
+        return to_route('products.index');
     }
 }

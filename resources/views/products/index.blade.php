@@ -41,6 +41,11 @@
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-800 flex gap-4">
                                     <a href="{{ route('products.edit', $product->id) }}" class="text-blue-600 block">Edit</a>
+                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 block">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
