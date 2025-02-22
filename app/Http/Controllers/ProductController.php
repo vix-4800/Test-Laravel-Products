@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -22,6 +23,13 @@ class ProductController extends Controller
         return view('products.edit', [
             'product' => $product,
         ]);
+    }
+
+    public function update(Request $request, Product $product): RedirectResponse
+    {
+        $product->update($request->all());
+
+        return to_route('products.index');
     }
 
     public function destroy(Product $product): RedirectResponse

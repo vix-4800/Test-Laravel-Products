@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function (): void {
     Route::name('products.')->prefix('products')->controller(ProductController::class)->group(function (): void {
         Route::get('', 'index')->name('index');
         Route::get('{product}', 'edit')->name('edit');
+        Route::patch('{product}', 'update')->name('update');
         Route::delete('{product}', 'destroy')->name('destroy');
     });
 });
