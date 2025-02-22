@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $seeders = [
             CategorySeeder::class,
             ProductSeeder::class,
+            UserSeeder::class,
         ];
 
         foreach ($seeders as $seeder) {
