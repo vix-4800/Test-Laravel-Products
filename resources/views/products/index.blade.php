@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6  text-gray-900 dark:text-gray-100 font-sans overflow-x-auto">
+                <div class="p-6 text-gray-900 dark:text-gray-100 font-sans overflow-x-auto">
                     <table class="w-full divide-y divide-gray-200">
                         <thead class="bg-gray-100 whitespace-nowrap">
                             <tr>
@@ -39,9 +39,8 @@
                                 <td class="px-4 py-4 text-sm text-gray-800">
                                     {{ $product->category->name }}
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-800">
-                                    <button class="text-blue-600 mr-4">Edit</button>
-                                    <button class="text-red-600">Delete</button>
+                                <td class="px-4 py-4 text-sm text-gray-800 flex gap-4">
+                                    <a href="{{ route('products.edit', $product->id) }}" class="text-blue-600 block">Edit</a>
                                 </td>
                             </tr>
                             @endforeach

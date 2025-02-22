@@ -15,4 +15,11 @@ class ProductController extends Controller
             'products' => Product::with('category')->get(),
         ]);
     }
+
+    public function edit(Product $product): View
+    {
+        return view('products.edit', [
+            'product' => $product,
+        ]);
+    }
 }
