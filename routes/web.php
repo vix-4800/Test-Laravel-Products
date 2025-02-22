@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,13 @@ Route::middleware('auth')->group(function (): void {
         Route::get('{product}', 'edit')->name('edit');
         Route::patch('{product}', 'update')->name('update');
         Route::delete('{product}', 'destroy')->name('destroy');
+    });
+
+    Route::name('orders.')->prefix('orders')->controller(OrderController::class)->group(function (): void {
+        Route::get('', 'index')->name('index');
+        // Route::get('{order}', 'edit')->name('edit');
+        // Route::patch('{order}', 'update')->name('update');
+        // Route::delete('{order}', 'destroy')->name('destroy');
     });
 });
 
